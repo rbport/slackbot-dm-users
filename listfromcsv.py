@@ -4,6 +4,8 @@ def csvtolist(): #this is the function that pulls emails from csv into a readabl
     results = []
     with open('emails.csv', newline='') as inputfile:
         for row in csv.reader(inputfile):
-            results.append(row[0]) #be very careful that you do have any empty lines in your csv file or you will get an Index out of Range error.
-    
+            if len(row) > 0:  # Check if the row has at least one element. eliminates empty line index error
+                results.append(row[0]) 
+    #print(results)
     return results
+
